@@ -16,13 +16,17 @@ app = Flask (__name__)
 
 # conncted to database
 engine = create_engine("sqlite:///hawaii.sqlite", echo=False)
-
 Base = automap_base()
 Base.prepare(engine, reflect = True)
 
 # refer to tables
 Station = Base.classes.station
 Measurement = Base.classes.measurement
+
+
+#Create sesson (link) from Python to the DB
+session = Session(engine)
+ 
 
 # home route
 @app.route("/")
@@ -36,12 +40,17 @@ def home():
         f"<center> /api/v1.0/<start/end> </center>"
         f"<center>  </center>"
         f"<center>  </center>"
-        f"<center>  </center>"
-
-        
+        f"<center>  </center>" 
     )
 
+# /api/v1.0/precipitation
+@app.route("/api/v1.0/precipitation")
+def precip():
+        #Return the year of precipitation. From jnotebook
+        year_ago = dt.date(2017,8,23) - dt.timedelta(days = 365)
+        PrcpData12m05py = session.query(Measurement.date,Measurement.prcp).filter(Measurement.date >= year_ago).all()
 
+session.close()
 
 
 

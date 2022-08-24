@@ -9,7 +9,7 @@ app = Flask (__name__)
 def home():
     return(
         f"<center> <h2> Welcome to the Hawaii Climate Analysis Local API! </h2> </center>"
-        f"<center> <h3> Welcome to the Hawaii Climate Analysis Local API! </h3> </center>"
+        f"<center> <h3> the following API's are available </h3> </center>"
         f"<center> /api/v1.0/precipitation </center>"
         f"<center> /api/v1.0/stations </center>"
         f"<center> /api/v1.0/tobs </center>"

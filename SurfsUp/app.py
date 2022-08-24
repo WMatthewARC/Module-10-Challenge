@@ -2,6 +2,16 @@
  
 from flask import Flask, jsonify
 
+#bring in imporats used in the notebook
+import numpy as np
+import pandas as pd
+import datetime as dt
+import sqlalchemy
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine, inspect, func, select
+
+
 app = Flask (__name__)
 
 # home route

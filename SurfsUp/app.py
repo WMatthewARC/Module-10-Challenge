@@ -49,13 +49,15 @@ def precip():
         #Return the year of precipitation. From jnotebook
         year_ago = dt.date(2017,8,23) - dt.timedelta(days = 365)
 
-        
-        results = session.query(Measurement.date, Measurement.prcp).filter(Measurement.date >= year_ago).all()
+
+        results = session.query(Measurement.date, Measurement.prcp).\
+            filter(Measurement.date >= year_ago).all()
 
 session.close()
 
 #dictionary with the date as the key and the precipaitation as a the value
 precipitation = {date: prcp for date, prcp in results}
+
 #convert tp a json
 
 

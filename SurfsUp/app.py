@@ -14,6 +14,16 @@ from sqlalchemy import create_engine, inspect, func, select
 
 app = Flask (__name__)
 
+# conncted to database
+engine = create_engine("sqlite:///hawaii.sqlite", echo=False)
+
+Base = automap_base()
+Base.prepare(engine, reflect = True)
+
+# refer to tables
+Station = Base.classes.station
+Measurement = Base.classes.measurement
+
 # home route
 @app.route("/")
 def home():

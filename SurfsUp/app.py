@@ -26,7 +26,7 @@ Measurement = Base.classes.measurement
 
 #Create sesson (link) from Python to the DB
 session = Session(engine)
- 
+
 
 # home route
 @app.route("/")
@@ -51,6 +51,9 @@ def precip():
         PrcpData12m05py = session.query(Measurement.date,Measurement.prcp).filter(Measurement.date >= year_ago).all()
 
 session.close()
+
+#dictionary with the date as the key and the precipaitation as a the value
+precipitation = {date: prcp for date, prcp in PrcpData12m05py}
 
 
 

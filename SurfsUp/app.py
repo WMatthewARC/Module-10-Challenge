@@ -2,7 +2,7 @@
  
 from flask import Flask, jsonify
 
-#bring in imporats used in the notebook
+#bring in imports used in the notebook
 import numpy as np
 import pandas as pd
 import datetime as dt
@@ -50,13 +50,13 @@ def precip():
         year_ago = dt.date(2017,8,23) - dt.timedelta(days = 365)
 
 
-        results = session.query(Measurement.date, Measurement.prcp).\
+        mattmattmatt = session.query(Measurement.date, Measurement.prcp).\
             filter(Measurement.date >= year_ago).all()
 
-session.close()
+             session.close()
 
 #dictionary with the date as the key and the precipaitation as a the value
-precipitation = {date: prcp for date, prcp in results}
+             precipitation = {date: prcp for date, prcp in mattmattmatt}
 
 #convert tp a json
 

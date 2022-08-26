@@ -38,7 +38,7 @@ def home():
         f"<center> /api/v1.0/precipitation </center>"
         f"<center> /api/v1.0/stations </center>"
         f"<center> /api/v1.0/tobs </center>"
-        f"<center> /api/v1.0/<start/end> </center>"
+        f"<center> /api/v1.0/start/end </center>"
         f"<center>  </center>"
         f"<center>  </center>"
         f"<center>  </center>" 
@@ -63,14 +63,72 @@ def precip():
 
 # /api/v1.0/stations route
 @app.route("/api/v1.0/stations")
-def prcip():
+def stations():
 
     results = session.query(Station.station).all()
     session.close()
     
-    stationList = list(np.revel(results))
+    stationList = list(np.ravel(results))
 #json
     return jsonify(stationList)
+
+
+# /api/v1.0/tobs route
+@app.route("/api/v1.0/tobs")
+def temperatures():
+
+    year_ago = dt.date(2017,8,23) - dt.timedelta(days = 365)
+
+    #resturn 
+    MostActiveStation = session.query(Measurement.date, Measurement.tobs).\
+        filter(Measurement.station == 'USC00519281').\
+            filter(Measurement.date >= year_ago).all()
+    session.close()
+    
+    temperaturesList = list(np.ravel(MostActiveStation))
+
+    return jsonify(temperaturesList)
+
+#/api/v1.0/
+#/api/v1.0/<start> and /api/v1.0/<start>/<end>
+@app.route("/api/v1.0/<start>")
+@app.route("/api/v1.0/<start>/<end>")
+def dateStats(start=None, end=None):
+
+    #select statment
+    selection = [func.min(Measurement.tobs), func.max(Measurement.tobs), func.avg(Measurement.tobs)]
+   
+    if not end: 
+        startDate = dt.datetime.strptime(start,"%m%d%Y")
+
+        results = session.query(*selection).filter(Measurement.date >= startDate).all()
+
+        session.close()
+
+        temperaturesList = list(np.ravel(results))
+
+        return jsonify(temperaturesList)
+
+    else:
+
+        startDate = dt.datetime.strptime(start,"%m%d%Y")
+        endDate = dt.datetime.strptime(end,"%m%d%Y")
+
+        results = session.query(*selection)\
+            .filter(Measurement.date >= startDate)\
+            .filter(Measurement.date <= endDate).all()
+
+        session.close()
+
+        temperaturesList = list(np.ravel(results))
+
+        return jsonify(temperaturesList)
+
+
+
+
+
+
 
 
 

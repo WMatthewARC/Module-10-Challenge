@@ -83,8 +83,8 @@ def temperatures():
 
     return jsonify(temperaturesList)
 
-#/api/v1.0/
 #/api/v1.0/<start> and /api/v1.0/<start>/<end>
+# User input http://localhost:5000/api/v1.0/"DDMMYYY""DDMMYYY"
 @app.route("/api/v1.0/<start>")
 @app.route("/api/v1.0/<start>/<end>")
 def dateStats(start=None, end=None):

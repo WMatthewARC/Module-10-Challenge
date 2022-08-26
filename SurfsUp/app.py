@@ -1,6 +1,5 @@
 ## Matt's app.py
- 
-#from lib2to3.pytree import _Results
+# what are we useing 
 from unittest import result
 from flask import Flask, jsonify
 
@@ -45,7 +44,7 @@ def home():
         f"<center>  </center>" 
     )
 
-# /api/v1.0/precipitation
+# /api/v1.0/precipitation route
 @app.route("/api/v1.0/precipitation")
 def precip():
         #Return the year of precipitation. From jnotebook
@@ -60,6 +59,18 @@ def precip():
     #convert tp a json
         return jsonify(precipitation)
 
+
+
+# /api/v1.0/stations route
+@app.route("/api/v1.0/stations")
+def prcip():
+
+    results = session.query(Station.station).all()
+    session.close()
+    
+    stationList = list(np.revel(results))
+#json
+    jsonify(stationList)
 
 
 

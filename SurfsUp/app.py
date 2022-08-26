@@ -95,7 +95,7 @@ def temperatures():
 @app.route("/api/v1.0/<start>/<end>")
 def dateStats(start=None, end=None):
 
-    #select statment
+    #select statment for start and end 
     selection = [func.min(Measurement.tobs), func.max(Measurement.tobs), func.avg(Measurement.tobs)]
    
     if not end: 
@@ -123,6 +123,9 @@ def dateStats(start=None, end=None):
         temperaturesList = list(np.ravel(results))
 
         return jsonify(temperaturesList)
+
+
+
 
 
 

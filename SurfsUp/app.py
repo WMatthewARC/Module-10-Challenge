@@ -23,10 +23,8 @@ Base.prepare(engine, reflect = True)
 Station = Base.classes.station
 Measurement = Base.classes.measurement
 
-
 #Create sesson (link) from Python to the DB
 session = Session(engine)
-
 
 # home route
 @app.route("/")

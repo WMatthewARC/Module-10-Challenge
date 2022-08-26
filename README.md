@@ -28,12 +28,12 @@ Clearly for fun as planning a vacation should be...
   
 ## Creating a Python application to act as a API :eyeglasses::snake:
 
-### Let's make sure to import those exact same tools and flask, we also need to establish the same engine connection create sessions. So, we could use those same queries in visual studios as we just did in Jupiter notebook. <i>I’m all about recycling!</i>
+### Let's make sure to import those exact same tools and flask, we also need to establish the same engine connection create sessions. So, we could use those same queries in visual studios as we just did in Jupiter notebook. <i>I’m all about recycling!</i> 
 - ![ERD](c10pic06.JPG)
   
   
 ### Next, I made the page, then I started to make all the different routes. <i>Sounds easy… Not easy.</i> 
-See Surfsup > app.py for all contents 
+See Surfsup > app.py for all content
 - ![ERD](c10pic07.JPG)
 - ![ERD](c10pic08.JPG)
 

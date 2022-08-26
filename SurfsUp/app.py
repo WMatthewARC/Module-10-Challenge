@@ -1,5 +1,7 @@
 ## Matt's app.py
  
+from lib2to3.pytree import _Results
+from unittest import result
 from flask import Flask, jsonify
 
 #bring in imports used in the notebook
@@ -50,13 +52,13 @@ def precip():
         year_ago = dt.date(2017,8,23) - dt.timedelta(days = 365)
 
 
-        mattmattmatt = session.query(Measurement.date, Measurement.prcp).\
+        results = session.query(Measurement.date, Measurement.prcp).\
             filter(Measurement.date >= year_ago).all()
 
-             session.close()
+        session.close()
 
 #dictionary with the date as the key and the precipaitation as a the value
-             precipitation = {date: prcp for date, prcp in mattmattmatt}
+            precipitation = {date: prcp for date, prcp in results}
 
 #convert tp a json
 

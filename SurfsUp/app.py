@@ -70,7 +70,7 @@ def prcip():
     
     stationList = list(np.revel(results))
 #json
-    jsonify(stationList)
+    return jsonify(stationList)
 
 
 

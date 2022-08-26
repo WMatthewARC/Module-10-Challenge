@@ -56,8 +56,6 @@ def precip():
     #convert tp a json
         return jsonify(precipitation)
 
-
-
 # /api/v1.0/stations route
 @app.route("/api/v1.0/stations")
 def stations():
@@ -68,7 +66,6 @@ def stations():
     stationList = list(np.ravel(results))
 #json
     return jsonify(stationList)
-
 
 # /api/v1.0/tobs route
 @app.route("/api/v1.0/tobs")

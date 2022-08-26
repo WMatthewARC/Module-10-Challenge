@@ -37,6 +37,7 @@ See Surfsup > app.py for all content
 - ![ERD](c10pic07.JPG)
 - ![ERD](c10pic08.JPG)
 
-##:octocat:This compltes the assignment <b>sqlalchemy-challenge.</b> :octocat:
-- API does work and all code runs without error. I will return for the BONUS section.
+# :octocat:This completes the assignment <i> "Module 10 - sqlalchemy-challenge."</i>  :octocat:
+-  API does work and all code runs without error. I will be returning for the BONUS section.
+Thank you, 
  
